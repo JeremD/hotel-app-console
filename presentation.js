@@ -16,6 +16,7 @@ async function start() {
  */
 async function input() {
 
+    // Boucle sur la saisie
     do {
         var saisie = await userInput("1. Lister les clients\n99. Sortir\n");
 
@@ -25,7 +26,7 @@ async function input() {
                 break;
             case "99":
                 console.log("Aurevoir");
-                break;
+                process.exit(1);
             default:
                 console.log("Veuillez choisir un menu correct !")
         }

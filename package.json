@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JeremD/hotel-app-console#readme",
   "dependencies": {
+    "request": "^2.88.2",
     "wait-for-user-input": "^1.0.0"
   }
 }
