@@ -1,13 +1,9 @@
-/*>> Liste des clients
-NOM_1 PRENOMS_1
-NOM_2 PRENOMS_2*/
-
 var request = require('request');
 
 /**
  * Récupérer la liste des clients (GET)
  */
-function listeClient() {
+function listerClients(getClient) {
     request('https://jeremy-hotel-web-api.herokuapp.com/clients?start=0&size=5', {
         json: true
     }, (err, res, body) => {
@@ -18,8 +14,9 @@ function listeClient() {
         }
 
         // Clients récupérés
-        console.log(body);
+        getClient(body);
     });
 }
 
-exports.client = listeClient;
+// Export du service listeClient
+exports.listerClients = listerClients;

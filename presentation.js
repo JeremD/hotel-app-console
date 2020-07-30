@@ -1,12 +1,13 @@
-// Attendre la saisie de l'utilisateur
-// Remplace readline pour lire les données en entrées de manière asynchrone
-var userInput = require('wait-for-user-input');
-var listerClients = require('./service');
+// Module qui remplace readline pour lire les données en entrées de manière asynchrone
+var userInput = require('wait-for-user-input'); // Attendre la saisie de l'utilisateur
+var service = require('./service');
 
 /**
  * Afficher le menu principal
  */
 async function start() {
+
+    console.log('** Administration Hotel **');
 
     // Appel de la saisie 
     await input();
@@ -25,11 +26,17 @@ async function input() {
         switch (saisie) {
             case "1":
                 console.log(">> Liste des clients");
-                listerClients.client();
+
+                // Appel du service listerClient (asynchrone)
+                service.listerClients(tableauClients => {
+                    // Retourner un tableau de client
+                    var getClient = tableauClients.map(client => " " + client.nom + " " + client.prenoms).join("\n");
+                    console.log(getClient);
+                });
                 break;
             case "99":
-                console.log("Aurevoir");
-                process.exit(1);
+                console.log("Au revoir");
+                break;
             default:
                 console.log("Veuillez choisir un menu correct !")
         }
